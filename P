@@ -1,0 +1,26 @@
+while True:
+    num1 = int(input("1st = "))
+    num2 = int(input("2nd = "))
+    exp  = input("exp(+-*/) = ")
+    
+    if exp == "+":
+        result = num1 + num2
+        print("result = ",result)
+
+    elif exp == "-":
+        result = num1 - num2
+        print("result = ",result)
+
+    elif exp == "*":
+        result = num1 * num2
+        print("result = ",result)
+    
+    elif exp == "/":
+        result = num1 / num2
+        print("result = ", result)
+    else: 
+        print("wrong answer")
+    
+    C = input("Q or C")
+    if C == "q":
+        break
