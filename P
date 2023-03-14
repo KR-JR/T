@@ -1,9 +1,15 @@
 while True:
     num1 = int(input("1st = "))
     num2 = int(input("2nd = "))
-    exp  = input("exp(+-*/) = ")
+
+    if not(type(num1) == float and type(num2) == float):
+        print("Wrong answer")
+        continue
+    
     
         
+    
+    exp  = input("exp(+-*/) = ")
     
     if exp == "+":
         result = num1 + num2
@@ -27,4 +33,3 @@ while True:
     if C == "q":
         break
     
-     
