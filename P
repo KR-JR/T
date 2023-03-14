@@ -1,44 +1,36 @@
 while True:
     num1 = input("1st = ")
-    if not isinstance(float(num1), float):
+    try:
+        num1 = float(num1)
+    except ValueError:
         print("invalid Input")
         continue
 
     num2 = input("2nd = ")
-    if not isinstance(float(num2), float):
+    try:
+        num2 = float(num2)
+    except ValueError:
         print("invalid Input")
         continue
     
-    num1 = float(num1)
-    num2 = float(num2)
 
 
     exp  = input("exp(+-*/) = ")
     
-    if exp == "+":
-        result = num1 + num2
+    if exp in "+-*/":
+        result = eval(f"{num1} {exp} {num2}")
         print("result = ",result)
 
-    elif exp == "-":
-        result = num1 - num2
-        print("result = ",result)
-
-    elif exp == "*":
-        result = num1 * num2
-        print("result = ",result)
-    
-    elif exp == "/":
-        result = num1 / num2
-        print("result = ", result)
     else: 
         print("wrong answer")
         continue
 
     while True:
-        C = input("Q or C")
+        C = input("Q or C ")
         if C.lower() == "c":
             break
         elif C.lower() == "q":
+            print("exiting..")
             exit()
         else:
             print("wrong answer")
