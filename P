@@ -24,5 +24,3 @@ while True:
     C = input("Q or C")
     if C == "q":
         break
-
-#YAS
