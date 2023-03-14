@@ -3,6 +3,8 @@ while True:
     num2 = int(input("2nd = "))
     exp  = input("exp(+-*/) = ")
     
+        
+    
     if exp == "+":
         result = num1 + num2
         print("result = ",result)
@@ -24,3 +26,5 @@ while True:
     C = input("Q or C")
     if C == "q":
         break
+    
+     
