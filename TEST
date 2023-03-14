@@ -1,7 +1,0 @@
-while True:
-    num1 = int(input("1st = "))
-    num2 = int(input("2nd = "))
-
-    if not(type(num1) == float and type(num2) == float):
-        print("Wrong answer")
-        continue
