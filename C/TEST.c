@@ -2,36 +2,22 @@
 
 typedef struct list {
     char data;
-    list *link;
+    struct list *link;
 }list;
 
 
 void printList(list *ptr) {
+    while(1) {
+        
+        printf("%c\n", ptr->data);
+        
+        if(ptr->link == NULL)
+            break;
+
+        ptr = ptr->link;
+    }
     printf("Address Contents\n");
-    printf("\n");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -48,4 +34,5 @@ main () {
 
     list *listPtr = &item1;
     printList(listPtr);
+
 }
