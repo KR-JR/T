@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 typedef struct list {
     char data;
     struct list *link;
@@ -22,6 +23,15 @@ void printList(list *ptr) {
 
 
 
+
+
+
+
+
+
+
+
+
 main () {
     list item1, item2, item3;
     
@@ -34,5 +44,4 @@ main () {
 
     list *listPtr = &item1;
     printList(listPtr);
-
 }
