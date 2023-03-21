@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 
 #define MAX_TERMS 250000
@@ -15,27 +14,29 @@ term a [MAX_TERMS];
 term b [MAX_TERMS];
 
 void transpose(term a[], term b[]) {
-
     int n, i, j, currentb;
     n = a[0].value;
     b[0].row = a[0].col;
     b[0].col = a[0].row;
     b[0].value = n;
-    
-    if( n > 0 ) {
-        currentb = 1;
-        for(i = 0; i < a[0].col; i++) {
-            for(j = 1; j <= n; j++) {
-                if(a[j].col == i) {
-                    b[currentb].row = a[j].col;
-                    b[currentb].col = a[j].row;
-                    b[currentb].value = a[j].value;
+
+    if (n > 0) {
+        currentb = 0;
+        for (i = 0; i < a[0].col; i++) {
+            for (j = 1; j <= n; j++) {
+                if (a[j].col == i) {
+                    b[currentb + 1].row = a[j].col;
+                    b[currentb + 1].col = a[j].row;
+                    b[currentb + 1].value = a[j].value;
                     currentb++;
                 }
             }
         }
-    } 
+    } else {
+        b[0].value = 0;
+    }
 }
+
 
 void FAST_TRANS(term a[],term b[]) {
     int row_terms[MAX_COL];
@@ -64,25 +65,16 @@ void FAST_TRANS(term a[],term b[]) {
 }
 
 int main() {
-    FILE *fp;
-    int i, row, col, value, count = 1, n = 500;
-    fp = fopen("input.txt", "r");
-    if (fp == NULL) {
-        printf("Failed to open input file.\n");
-        return 1;
-    }
+    int i, j, n = 500, count = 1;
+    clock_t start, end;
+    double time_spent_simple_transpose, time_spent_fast_transpose;
 
-    // Read input matrix from file
-    for (i = 0; i < n * n; i++) {
-        if (fscanf(fp, "%d %d %d", &row, &col, &value) != 3) {
-            printf("Error reading input file.\n");
-            fclose(fp);
-            return 1;
-        }
-        if (value != 0) {
-            a[count].row = row;
-            a[count].col = col;
-            a[count].value = value;
+    // Input matrix
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            a[count].row = i;
+            a[count].col = j;
+            a[count].value = (i == j || i == j - 1) ? 1 : 0;
             count++;
         }
     }
@@ -90,6 +82,58 @@ int main() {
     a[0].col = n;
     a[0].value = count - 1;
 
-    fclose(fp);
+    // Simple transpose
+    start = clock();
+    for (i = 0; i < 500; i++) {
+        transpose(a, b);
+    }
+    end = clock();
+    time_spent_simple_transpose = (double)(end - start) / CLOCKS_PER_SEC;
+    
+    // Fast transpose
+    start = clock();
+    for (i = 0; i < 500; i++) {
+        FAST_TRANS(a, b);
+    }
+    end = clock();
+    time_spent_fast_transpose = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("Execution time using simple_transpose(): %f seconds\n", time_spent_simple_transpose);
+    printf("Execution time using fast_transpose(): %f seconds\n", time_spent_fast_transpose);
+
+    // New input matrix
+    count = 1;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            a[count].row = i;
+            a[count].col = j;
+            a[count].value = j;
+            count++;
+        }
+    }
+    a[0].row = n;
+    a[0].col = n;
+    a[0].value = count - 1;
+
+    // Simple transpose for new input
+    start = clock();
+    for (i = 0; i < 500; i++) {
+        transpose(a, b);
+    }
+    end = clock();
+    time_spent_simple_transpose = (double)(end - start) / CLOCKS_PER_SEC;
+    
+    // Fast transpose for new input
+    start = clock();
+    for (i = 0; i < 500; i++) {
+        FAST_TRANS(a, b);
+    }
+    end = clock();
+    time_spent_fast_transpose = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("Execution time using simple_transpose() for new input: %f seconds\n", time_spent_simple_transpose);
+    printf("Execution time using fast_transpose() for new input: %f seconds\n", time_spent_fast_transpose);
+
     return 0;
 }
+
