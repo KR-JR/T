@@ -14,7 +14,6 @@ term a [MAX_TERMS];
 term b [MAX_TERMS];
 
 void transpose(term a[], term b[]) {
-
     int n, i, j, currentb;
     n = a[0].value;
     b[0].row = a[0].col;
@@ -54,10 +53,12 @@ void FAST_TRANS(term a[],term b[]) {
             starting_pos[i] = starting_pos[i-1] + row_terms[i-1];
 
         for(i = 1; i <= num_terms; i++) {
-            j=starting_pos[a[i].col]++;
-            b[j].row = a[i].col;
-            b[j].col = a[i].row;
-            b[j].value = a[i].value;
+            for(j = 1; j <= num_terms; j++) {
+                j=starting_pos[a[i].col]++;
+                b[j].row = a[i].col;
+                b[j].col = a[i].row;
+                b[j].value = a[i].value;
+            }
         }
     }
 }
@@ -68,25 +69,19 @@ int main() {
     double time_spent_simple_transpose, time_spent_fast_transpose;
 
     // Input matrix
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            int val;
-            scanf("%d", &val);
-            if (val != 0) {
-                a[count].row = i;
-                a[count].col = j;
-                a[count].value = val;
-                count++;
-            }
-        }
+
+    scanf("&d &d &d", &a[0].row, &a[0].col, &a[0].value);
+
+    for(int i = 1; i < 499; ++i) {
+        a[i].row = a[i = 1].row + 1;
+        a[i].col = a[i = 1].col + 1;
+        a[i].value = 1;
     }
-    a[0].row = n;
-    a[0].col = n;
-    a[0].value = count - 1;
+
 
     // Simple transpose
     start = clock();
-    for (i = 0; i < 1000; i++) {
+    for(i = 0; i < 1000; i++) {
         transpose(a, b);
     }
     end = clock();
@@ -94,7 +89,7 @@ int main() {
     
     // Fast transpose
     start = clock();
-    for (i = 0; i < 1000; i++) {
+    for(i = 0; i < 1000; i++) {
         FAST_TRANS(a, b);
     }
     end = clock();
