@@ -15,7 +15,7 @@ typedef struct {
 
 typedef struct {
     Element elements[MAX_STACK_SIZE];
-    int top
+    int top;
 } Stack;
 
 
@@ -37,8 +37,8 @@ bool IsFull(Stack S) {
     return S.top >= MAX_STACK_SIZE;
 }
 
-bool IsEmpty(Stack stack) {
-    return stack.top == -1;
+bool IsEmpty(Stack S) {
+    return S.top == -1;
 }
 
 Element Pop(Stack *S) {

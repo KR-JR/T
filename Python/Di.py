@@ -1,11 +1,15 @@
-string = input("염기 서열을 입력해주세요: ")
+class C:
+    def __init__(self):
+        self.result = 0
 
-counta = string.lower().count('a')
-countt = string.lower().count('t')
-countg = string.lower().count('g')
-countc = string.lower().count('c')
+    def add(self, num):
+        self.result += num
+        return self.result
 
-print("a의 개수: ",counta)
-print("t의 개수: ",countt)
-print("g의 개수: ",countg)
-print("c의 개수: ",countc)
+cal1 = C()
+cal2 = C()
+
+print(cal1.add(3))
+print(cal1.add(3))
+print(cal1.add(3))
+print(cal1.add(3))
