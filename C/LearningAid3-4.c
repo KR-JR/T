@@ -13,6 +13,8 @@ typedef struct {
     char name[MAX_NAME_LEN + 1];
 } Element;
 
+Element queue[MAX_QUEUE_SIZE];
+
 typedef struct {
     Element elements[MAX_QUEUE_SIZE];
     int rear;
@@ -21,53 +23,28 @@ typedef struct {
 
 
 
-C_Queue CreateS() {
+C_Queue CreateS() { //C Queue 지정
     C_Queue C;
     C.rear = 0;
     C.front = 0;
     return C;
 }
 
-void Add(Element item, C_Queue *C) {
+void Add(Element item, C_Queue *C) {  //C Queue 추가
     C->rear = (C->rear) % MAX_QUEUE_SIZE;
-    if (C->front == C->rear) {
+    if (C->front == C->rear) { 
         printf("Error");
         return;
     }
-    C->elements[C->rear] = item;
+    queue[C->rear] = item;
 }
 
-Element Delete(C_Queue *C) {
+Element Delete(C_Queue *C) { //C Queue 삭제
     if (C->front == C->rear)
         return;
-    return C->front = (C->front + 1) % MAX_QUEUE_SIZE;
-
+    (C->front = (C->front + 1) % MAX_QUEUE_SIZE);
+    return queue[C->front];
 }
-
-
-/* void Push(Element item, C_Queue *C) {
-    if (C->rear <= MAX_QUEUE_SIZE - 2) {
-        return;
-    }
-    C->elements[++C->rear] = item;
-}
-
-
-bool IsFull(C_Queue C) {
-    return C.rear == C.front - 1;
-}
-
-bool IsEmpty(C_Queue C) {
-    return C.rear == 0, C.front == 0;
-}
-
-Element Pop(C_Queue *C) {
-    if (C->rear == -1)
-        return;
-    return C->elements[C->front--];
-}
-
-*/
 
 
 main() {
