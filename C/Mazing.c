@@ -2,8 +2,8 @@
 #define MAX_STACK_SIZE 100
 #define max_row 11
 #define max_col 8
-#define exit_row 7
-#define exit_col 10
+#define exit_row 9
+#define exit_col 6
 #define True 1
 #define False 0
 
@@ -70,7 +70,7 @@ offsets move[8] = { {-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, 
 
 void Path(void) {
 //미로 이동하는 경로가 있으면 출력
-        int i, row, col, next_row, next_col, dir, mark[max_row][max_col], found = False;
+        int i, row, col, next_row, next_col, dir, mark[max_row][max_col] = {0}, found = False;
         Element position;
         mark[1][1] = 1; //시작지점
         top = 0; //시작점 스택Add
@@ -88,7 +88,7 @@ void Path(void) {
                 next_row = row + move[dir].vert;
                 next_col = col + move[dir].horiz;
                 if(next_row == exit_row && next_col == exit_col)
-                        found = True; //탈출
+                    found = True; //탈출
                 else if(!maze[next_row][next_col] && !mark[next_row][next_col]) {
                     mark[next_row][next_col] = True;
                     position.row = row; position.col = col;
@@ -100,15 +100,16 @@ void Path(void) {
             }
         }
         
-        if(found) {
-                printf("Path is \n");
-                printf("row col\n");
-                for(i = 0; i <= top; i++)
-                        printf("%2d%5d", stack[i].row, stack[i].col);
-                printf("%2d%5d\n", row, col);
-                printf("%2d%5d\n", exit_row, exit_col);
-        }
-        else printf("No Path!\n");
+    if(found) {
+        printf("Path is \n");
+        printf("row  col\n");
+        for(i = 0; i <= top; i++)
+            printf("%2d%5d\n", stack[i].row, stack[i].col);
+            printf("%2d%5d\n", row, col);
+            printf("exit row exit_col\n");
+            printf("%d \t %d\n", exit_row, exit_col);
+    }
+    else printf("No Path!\n");
 }
 
 int main() {
