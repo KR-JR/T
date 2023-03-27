@@ -36,13 +36,6 @@ int maze[max_row][max_col] = {
 };
 
 
-Stack CreateS() {
-    Stack A;
-    A.top = -1;
-    return A;
-}
-
-
 
 void Add(Element *item, Stack *S) {
     if (S->top >= MAX_STACK_SIZE - 1) { //스택이 넘쳤는지 확인
@@ -54,15 +47,11 @@ void Add(Element *item, Stack *S) {
 
 
 
-Element Delete(Stack *S) {
+void Delete(Stack *S) {
     if (S->top == -1) //남아있는 값이 있는지 확인
         printf("Stack Underflow");
     return S->stack[S->top--];
 }
-
-
-
-
 
 
 
@@ -86,7 +75,7 @@ void Path(Stack *S) {
         S->stack[0].dir = 1;
         
         while(S->top > -1 && !found) {
-            position = Delete(&S->top);
+            position = Delete(*S->top, S);
             row = position.row; col=position.col;
             dir = position.dir;
 
@@ -100,7 +89,7 @@ void Path(Stack *S) {
                     mark[next_row][next_col] = 1;
                     position.row = row; position.col = col;
                     position.dir = ++dir;
-                    Add(&position, S->top);
+                    Add(&position, S);
                     row = next_row; col = next_col; dir = 0;
                 }
                         else ++dir;
@@ -116,9 +105,4 @@ void Path(Stack *S) {
                 printf("%2d%5d\n", exit_row, exit_col);
         }
         else printf("경로가 없음!\n");
-}
-
-int main() {
-    Path();
-    return 0;
 }
