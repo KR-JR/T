@@ -9,7 +9,7 @@ int stack[MAX_STACK_SIZE]; // global stack
 char expr[MAX_EXPR_SIZE]; // input string
 
 
-// struct push
+// 구조체 Push
 void Push(int *top, int item) {
     if (*top >= MAX_STACK_SIZE - 1) { //check if the stack overflowed
         printf("Stack Overflow");
@@ -18,9 +18,9 @@ void Push(int *top, int item) {
     stack[++(*top)] = item;
 }
 
-// Struct Pop with Element as type
+// Element를 타입으로 가지는 구조체 Pop
 int Pop(int *top) {
-    if (*top == -1) {
+    if (*top == -1) { //남아있는 값이 있는지 확인
         printf("Stack Underflow\n");
         exit(1);
     }
