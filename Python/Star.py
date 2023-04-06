@@ -8,12 +8,19 @@ t.pensize("5")
 t.penup()
 t.goto(-100, 100)
 t.pendown()
+t.color("yellow")
+
+
+i = 0
 
 #5번 선 긋기 모양:STAR
-for i in range(5):
-    t.forward(200)
-    t.right(144)
-
+while True:
+    if i < 6:
+        t.forward(200)
+        t.right(144)
+        i = i+1
+    else:
+        break
 
 
 turtle.done()

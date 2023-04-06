@@ -26,7 +26,7 @@ aver_data = sum_data / len(data) #data의 평균값 계산
 if aver_cir >= 60: #60~65 = C0
     if aver_cir >= 65: #65~70 = C+
         if aver_cir >= 70: #70~75 = B0
-            if aver_cir >= 75: #75~ 80 = B+
+            if aver_cir >= 75: #75~ \80 = B+
                 if aver_cir >= 80: #80~85 = A0
                     if aver_cir >= 85: #85~ = A+
                         result_cir = "A+"
