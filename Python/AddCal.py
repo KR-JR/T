@@ -5,7 +5,7 @@ def click(key):
     if key == '=':		# “=” 버튼이면 수식을 계산하여 결과를 표시한다.
         current = entry.get()
         entry2.insert(END, str(current))
-
+        
         try:
             result = eval(entry2.get())
             entry.delete(0, END)
@@ -16,7 +16,7 @@ def click(key):
 
     elif key == '%':
         current = entry2.get()
-        remove = current[:-1]   
+        remove = current[:-1]    
 
         try:
             trans = float(remove)
@@ -24,6 +24,7 @@ def click(key):
             per = trans * (entry1 / 100)
             entry2.insert(END, per)
             entry.delete(0, END)
+
         except:
             entry.insert(END, "오류!")        
 
@@ -76,28 +77,36 @@ def click(key):
         except:
             entry.insert(END, "오류!")   
 
-    elif key in ['+', '-', '*', '/']: # operator 입력
-        current = entry.get()
-        entry2.insert(END, str(current))
-        entry2.insert(END, key)
-        entry.delete(0, END)
-    
+    elif key in ['+', '-', '*', '/']:
+        try: 
+            last = entry2.get(END-1, END)
+            if last in ['+', '-', '*', '/']:
+                entry2.delete(0, END)
+                entry2.insert(END, key)
+
+
+
+        except:
+            current = entry.get()
+            entry2.insert(END, str(current))
+            entry2.insert(END, key)
+            entry.delete(0, END)
+
     else:
         entry.insert(END, key)
         
-
 
 window = Tk()
 window.title("표준 계산기")
 
 # 버튼 위치 및 종류 정하기(대충)
 buttons = [
-'%', 'CE', 'C', '<-',
-'1/x', 'x^2','√x', '/',
-'7', '8', '9', '*', 
-'4', '5', '6', '-', 
-'1', '2', '3', '+', 
-'+/-', '0', '.', '=']
+'%', 'CE', 'C', '<-', 'MC',
+'1/x', 'x^2','√x', '/', 'MR',
+'7', '8', '9', '*', 'M+',
+'4', '5', '6', '-', 'M-',
+'1', '2', '3', '+', 'MS',
+'+/-', '0', '.', '=', 'M>']
 
 # 반복문으로 버튼을 생성한다.
 i=0
@@ -105,16 +114,15 @@ button_font = font.Font(size = 40) # 버튼 폰트(사이즈)
 for b in buttons:
     cmd = lambda x = b: click(x)
     b = Button(window, text  = b, width = 4, relief = 'ridge', command = cmd, font = button_font) # 버튼 생성
-    b.grid(row = (i // 4 + 1) + 1 , column = i % 4) # 버튼 위치 조정
+    b.grid(row = (i // 5 + 1) + 1 , column = i % 5) # 버튼 위치 조정
     i += 1
 
 entry_font = font.Font(size = 40) # 엔트리 폰트(사이즈)
 # 엔트리 위젯은 맨 윗줄의 5개의 셀에 걸쳐서 배치된다. 
-entry = Entry(window, width = 18, bg = "yellow", font = entry_font) # entry 생성
-entry.grid(row = 1, column = 0, columnspan = 4) # entry 위치 지정
-entry2 = Entry(window, width = 18, bg = "gray", font = entry_font) # entry2 생성
-entry2.grid(row = 0, column = 0, columnspan = 4) # entry2 위치 지정
-
+entry = Entry(window, width = 22, bg = "yellow", font = entry_font) # entry 생성
+entry.grid(row = 1, column = 0, columnspan = 5) # entry 위치 지정
+entry2 = Entry(window, width = 22, bg = "gray", font = entry_font) # entry2 생성
+entry2.grid(row = 0, column = 0, columnspan = 5) # entry2 위치 지정
 
 
 
