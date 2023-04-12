@@ -1,99 +1,142 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-#define MAX_STACK_SIZE 100
-#define MAX_EXPR_SIZE 100
+typedef struct enroll_s{
+     int id_num;
+     int course_num;
+     struct enroll_s* left;
+     struct enroll_s* right;
+} *enroll_sp;
 
+enroll_sp courses[35];
+enroll_sp students[500];
 
-int stack[MAX_STACK_SIZE]; // global stack
-char expr[MAX_EXPR_SIZE]; // input string
+void reset() {
+    for (int i = 0; i < 35; i++) {
+        courses[i] = NULL;
+    }
+    for (int i = 0; i < 500; i++) {
+        students[i] = NULL;
+    }
+}
 
+void insert(enroll_sp* head, enroll_sp node) {
+    enroll_sp c = *head;
+    enroll_sp p = NULL;
+    while (c != NULL && c->id_num < node->id_num) {
+        p = c;
+        c = c->right;
+    }
 
-// 구조체 Push
-void Push(int *top, int item) {
-    if (*top >= MAX_STACK_SIZE - 1) { //check if the stack overflowed
-        printf("Stack Overflow");
+    if (p == NULL) {
+        node->right = *head;
+        *head = node;
+    }
+
+    else {
+        p->right = node;
+        node->left = p;
+        node->right = c;
+        if (c != NULL) {
+            c->left = node;
+        }
+
+    }
+}
+
+void delete(enroll_sp* head, enroll_sp node) {
+    if (*head == NULL) {
+        printf("Error: list is empty\n");
         return;
     }
-    stack[++(*top)] = item;
-}
 
-// Element를 타입으로 가지는 구조체 Pop
-int Pop(int *top) {
-    if (*top == -1) { //남아있는 값이 있는지 확인
-        printf("Stack Underflow\n");
-        exit(1);
+    enroll_sp c = *head;
+    enroll_sp p = NULL;
+    while (c != NULL && c != node) {
+        p = c;
+        c = c->right;
     }
-    return stack[(*top)--];
-}
-
-
-typedef enum {
-    lparen, rparen, plus, minus, times, divide, mod, eos, operand
-} Precedence;
-
-
-Precedence Get_token(char *psymbol, int *pn) {
-    *psymbol = expr[(*pn)++];
-    switch (*psymbol) {
-        case '(' : return lparen;
-        case ')' : return rparen;
-        case '+' : return plus;
-        case '-' : return minus;
-        case '*' : return times;
-        case '/' : return divide;
-        case '%' : return mod;
-        case ' ' : return eos;
-        default: return operand;
-        /* no error checking */
+    if (c == NULL) {
+        printf("Error : Node not found.\n");
+        return;
     }
-}
 
-
-int Eval() {
-    Precedence token; // enum token;
-    char symbol;
-    int op1, op2; 
-    int n = 0; 
-    int top = -1;
-    token = Get_token(&symbol, &n);
-
-    while (token != eos) {
-        if (token == operand) {
-            Push(&top, symbol-'0'); // change to number
-        } else {
-            op2 = Pop(&top);
-            op1 = Pop(&top);
-
-            switch (token) {
-                case plus:
-                    Push(&top, op1+op2);
-                    break;
-                case minus:
-                    Push(&top, op1-op2);
-                    break;
-                case times:
-                    Push(&top, op1*op2);
-                    break;
-                case divide:
-                    Push(&top, op1/op2);
-                    break;
-                case mod:
-                    Push(&top, op1%op2);
-            }
+    if (p == NULL) {
+        *head = c->right;
+        if (*head != NULL) {
+            (*head)->left = NULL;
         }
-        token = Get_token(&symbol, &n);
     }
-    return Pop(&top); //pop the evaluated value
+    else {
+        p->right = c->right;
+        if (c->right != NULL) {
+            c->right->left = p;
+        }
+    }
+    free(c);
 }
+
+void print_course_list(int course_num) {
+    enroll_sp c = courses[course_num - 100];
+    printf("%d: ", course_num);
+    while (c != NULL) {
+        printf("%d ", c->id_num);
+        c = c->right;
+    }
+    printf("\n");
+}
+
+void print_student_list(int id_num) {
+    enroll_sp curr = students[id_num - 2000];
+    printf("%d: ", id_num);
+    while (curr != NULL) {
+        printf("%d ", curr->course_num);
+        curr = curr->right;
+    }
+    printf("\n");
+}
+
+void enroll_student(int id_num, int course_num) {
+    enroll_sp node = (enroll_sp)malloc(sizeof(struct enroll_s));
+    node->id_num = id_num;
+    node->course_num = course_num;
+   
+    insert(&courses[course_num - 100], node);
+
+    insert(&students[id_num - 2000], node);
+}
+
+
 
 int main() {
-    printf("Enter an expression: ");
-    fgets(expr, MAX_EXPR_SIZE, stdin);
+    reset();
+   
+    enroll_student(2002, 107);
+    enroll_student(2001, 102);
+    enroll_student(2002, 101);
+    enroll_student(2003, 109);
+    enroll_student(2005, 101);
+    enroll_student(2004, 108);
+    enroll_student(2017, 103);
+    enroll_student(2034, 104);
+    enroll_student(2008, 105);
+    enroll_student(2005, 106);
 
-    int result = Eval();
 
-    printf("Result: %d\n", result);
+   
+    print_course_list(101);
+    print_course_list(102);
+    print_course_list(103);
+    print_course_list(104);
+    print_student_list(2001);
+    print_student_list(2002);
+    print_student_list(2017);
+    print_student_list(2034);
+
+    print_course_list(101);
+    print_student_list(2004);
 
     return 0;
-}
+
+} 
