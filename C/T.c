@@ -2,141 +2,129 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct enroll_s{
-     int id_num;
-     int course_num;
-     struct enroll_s* left;
-     struct enroll_s* right;
+#define MAX_LINE_LENGTH 25
+
+typedef struct enroll_s { 
+    int id_num;
+    int course_num;
+    struct enroll_s *left;
+    struct enroll_s *right;
 } *enroll_sp;
 
 enroll_sp courses[35];
 enroll_sp students[500];
 
-void reset() {
-    for (int i = 0; i < 35; i++) {
-        courses[i] = NULL;
-    }
+// Add this function to print the courses for each student in ascending order of ID number
+void print_course_list() {
     for (int i = 0; i < 500; i++) {
-        students[i] = NULL;
-    }
-}
-
-void insert(enroll_sp* head, enroll_sp node) {
-    enroll_sp c = *head;
-    enroll_sp p = NULL;
-    while (c != NULL && c->id_num < node->id_num) {
-        p = c;
-        c = c->right;
-    }
-
-    if (p == NULL) {
-        node->right = *head;
-        *head = node;
-    }
-
-    else {
-        p->right = node;
-        node->left = p;
-        node->right = c;
-        if (c != NULL) {
-            c->left = node;
-        }
-
-    }
-}
-
-void delete(enroll_sp* head, enroll_sp node) {
-    if (*head == NULL) {
-        printf("Error: list is empty\n");
-        return;
-    }
-
-    enroll_sp c = *head;
-    enroll_sp p = NULL;
-    while (c != NULL && c != node) {
-        p = c;
-        c = c->right;
-    }
-    if (c == NULL) {
-        printf("Error : Node not found.\n");
-        return;
-    }
-
-    if (p == NULL) {
-        *head = c->right;
-        if (*head != NULL) {
-            (*head)->left = NULL;
+        enroll_sp student = students[i];
+        if (student != NULL) {
+            printf("%d: ", i);
+            enroll_sp curr = student->right;
+            while (curr != NULL) {
+                printf("%d ", curr->course_num);
+                curr = curr->right;
+            }
+            printf("\n");
         }
     }
-    else {
-        p->right = c->right;
-        if (c->right != NULL) {
-            c->right->left = p;
-        }
-    }
-    free(c);
 }
-
-void print_course_list(int course_num) {
-    enroll_sp c = courses[course_num - 100];
-    printf("%d: ", course_num);
-    while (c != NULL) {
-        printf("%d ", c->id_num);
-        c = c->right;
-    }
-    printf("\n");
-}
-
-void print_student_list(int id_num) {
-    enroll_sp curr = students[id_num - 2000];
-    printf("%d: ", id_num);
-    while (curr != NULL) {
-        printf("%d ", curr->course_num);
-        curr = curr->right;
-    }
-    printf("\n");
-}
-
-void enroll_student(int id_num, int course_num) {
-    enroll_sp node = (enroll_sp)malloc(sizeof(struct enroll_s));
-    node->id_num = id_num;
-    node->course_num = course_num;
-   
-    insert(&courses[course_num - 100], node);
-
-    insert(&students[id_num - 2000], node);
-}
-
-
 
 int main() {
-    reset();
-   
-    enroll_student(2002, 107);
-    enroll_student(2001, 102);
-    enroll_student(2002, 101);
-    enroll_student(2003, 109);
-    enroll_student(2005, 101);
-    enroll_student(2004, 108);
-    enroll_student(2017, 103);
-    enroll_student(2034, 104);
-    enroll_student(2008, 105);
-    enroll_student(2005, 106);
+    char line[MAX_LINE_LENGTH];
+    FILE *fp = fopen("input.txt", "r"); // replace "input.txt" with your input file name
+    if (fp == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
 
+    while (fgets(line, MAX_LINE_LENGTH, fp) != NULL) {
+        int id, course;
+        char action;
+        sscanf(line, "%10d%10d %c", &id, &course, &action);
+        if (id < 0 || id >= 500 || course < 0 || course >= 35) {
+            printf("Error: Invalid input\n");
+            continue;
+        }
 
-   
-    print_course_list(101);
-    print_course_list(102);
-    print_course_list(103);
-    print_course_list(104);
-    print_student_list(2001);
-    print_student_list(2002);
-    print_student_list(2017);
-    print_student_list(2034);
+        enroll_sp student = students[id];
+        if (student == NULL) {
+            student = malloc(sizeof(struct enroll_s));
+            student->id_num = id;
+            student->left = NULL;
+            student->right = NULL;
+            students[id] = student;
+        }
 
-    print_course_list(101);
-    print_student_list(2004);
+        enroll_sp course_node = courses[course];
+        if (course_node == NULL) {
+            course_node = malloc(sizeof(struct enroll_s));
+            course_node->course_num = course;
+            course_node->left = NULL;
+            course_node->right = NULL;
+            courses[course] = course_node;
+        }
 
+        if (action == 'A') {
+            enroll_sp prev = NULL;
+            enroll_sp curr = student;
+            while (curr != NULL) {
+                prev = curr;
+                curr = curr->right;
+            }
+            prev->right = course_node;
+            prev = NULL;
+            curr = course_node;
+            while (curr != NULL) {
+                prev = curr;
+                curr = curr->left;
+            }
+            prev->left = student;
+        } 
+
+        else if (action == 'D') {
+            enroll_sp student = students[id];
+            enroll_sp course_node = courses[course];
+            if (student == NULL || course_node == NULL) {
+                printf("%d %d D ** not enrolled **\n", id, course);
+            } else {
+                enroll_sp prev = NULL;
+                enroll_sp curr = student;
+                while (curr != NULL && curr != course_node) {
+                    prev = curr;
+                    curr = curr->right;
+                }
+                if (curr == course_node) {
+                    if (prev == NULL) {
+                        student = curr->right;
+                    } else {
+                        prev->right = curr->right;
+                    }
+                    prev = NULL;
+                    curr = course_node;
+                    while (curr != NULL && curr != student) {
+                        prev = curr;
+                        curr = curr->left;
+                    }
+                    if (curr == student) {
+                        if (prev == NULL) {
+                            course_node = curr->left;
+                        } else {
+                            prev->left = curr->left;
+                        }
+                    }
+                    free(curr);
+                } else {
+                    printf("%d %d D ** not enrolled **\n", id, course);
+                }
+            }
+        } 
+        
+        else {
+            printf("Error: Invalid input\n");
+}   
+    }
+    print_course_list();
+    fclose(fp);
     return 0;
-
-} 
+}
