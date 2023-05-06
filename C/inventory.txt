@@ -1,13 +1,4 @@
 A 101001 Computer Case 11 1
 A 123456 Main Board 11 5
 A 666666 LAN Card 38 3
-I 110010 16G RAM 3 2
-A 121212 Mouse 10 3
-I 212121 Power Adapter 10 3
-A 222222 Monitor 11 5
-A 191919 Hard Disc 12 3
-A 100000 Laser Printer 11 2
-R 101001 5
-R 555555 3
-I 121212 5
-P 5
+P
