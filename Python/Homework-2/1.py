@@ -19,5 +19,5 @@ while True:
     else:
         filter_even_numbers(int(num), even_numbers)
 
-filtered_numbers = filter_even_numbers(0, even_numbers)
+filtered_numbers = filter_even_numbers(1, even_numbers)  
 print("짝수는:", filtered_numbers)
