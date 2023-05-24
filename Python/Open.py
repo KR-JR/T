@@ -1,0 +1,5 @@
+file = open('C:/Code/Python/test.txt', 'w')
+result = file.write('Hello python~')
+print('type of result :', type(result))
+print('result :', result)
+file.close()

@@ -1,0 +1,5 @@
+num = [input()]
+
+
+print(num)
+
