@@ -1,4 +1,0 @@
-A 101001 Computer Case 11 1
-A 123456 Main Board 11 5
-A 666666 LAN Card 38 3
-P

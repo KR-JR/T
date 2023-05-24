@@ -1,0 +1,11 @@
+N 101001  Computer Case        11         1
+N 123456  Main Board           17         5
+N 666666  LAN Card   	       12         3
+N 115510  16G RAM              13         2
+A 101001                        14
+R 123456                        14
+A 115510                        3
+A 112456                        2
+D 122222
+P
+X
