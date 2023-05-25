@@ -1,11 +1,13 @@
-def sumFunc(a, b, c):
-    result = a + b + c
-    return result
+import csv
 
-first = int(input("first: "))
-second = int(input("second: "))
-third = int(input("third: "))
+file = open('C:/Code/Python/average.csv', "r")
+myData = csv.reader(file)
 
-sum = sumFunc(first, second, third)
+sum_score = 0
 
-print(sum)
+for line in myData:
+    sum_score += int(line[1])
+    
+average_score = sum_score / 5
+
+print(average_score)
