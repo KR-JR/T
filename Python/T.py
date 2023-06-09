@@ -1,11 +1,12 @@
-def sumFunc(a, b, c):
-    result = a + b + c
-    return result
+file = open('C:/Code/Python/num.txt', 'w')
 
-first = int(input("first: "))
-second = int(input("second: "))
-third = int(input("third: "))
+i = 10000
 
-sum = sumFunc(first, second, third)
+while True:
+    num = i
+    file.write(str(num))
+    file.write(" ")
+    i -= 1
+    if i == 1:
+        break
 
-print(sum)
