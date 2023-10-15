@@ -1,0 +1,107 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 445, 286
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PrjClient"
+FONT 10, "굴림", 400, 0, 0x81
+BEGIN
+    CONTROL         "(IPv6) 주소:",IDC_ISIPV6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,8,44,10
+    EDITTEXT        IDC_IPADDR,52,7,90,12,ES_AUTOHSCROLL
+    LTEXT           "포트 번호:",IDC_STATIC,146,9,31,8
+    EDITTEXT        IDC_PORT,178,7,40,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "서버에 접속하기",IDC_CONNECT,7,23,103,14
+    DEFPUSHBUTTON   "메시지 전송",IDC_SENDMSG,115,23,103,14
+    LTEXT           "메시지:",IDC_STATIC,7,43,23,8
+    EDITTEXT        IDC_MSG,30,41,188,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_STATUS,7,59,211,220,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+    CONTROL         "빨강",IDC_COLORRED,"Button",BS_AUTORADIOBUTTON,344,7,24,10
+    CONTROL         "초록",IDC_COLORGREEN,"Button",BS_AUTORADIOBUTTON,379,7,24,10
+    CONTROL         "파랑",IDC_COLORBLUE,"Button",BS_AUTORADIOBUTTON,414,7,24,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 438
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 279
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Korean resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
