@@ -21,7 +21,7 @@ print('LEE', 'JAEHUN', sep = '#')
 
 f = open('dump.txt', 'w')
 print('LEE JAEHUN', file = f)
-f.cloase()
+f.close()
 
 import sys
 print('LEE JAEHUN', file = sys.stderr)
@@ -35,4 +35,4 @@ i = 123
 f = 3.14
 s = 'LEE'
 
-print()
+print(i, f, s)
