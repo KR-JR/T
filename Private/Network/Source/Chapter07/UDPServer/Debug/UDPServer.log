@@ -1,0 +1,3 @@
+﻿  UDPServer.cpp
+C:\Code\Private\Network\Source\Chapter07\UDPServer\UDPServer.cpp(76,30): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  UDPServer.vcxproj -> C:\Code\Private\Network\Source\Chapter07\UDPServer\Debug\UDPServer.exe

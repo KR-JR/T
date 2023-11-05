@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 	// 데이터 통신에 사용할 변수
 	char buf[BUFSIZE+1];
 	int len;
+	int addrlen;
 
 	// 브로드캐스트 데이터 보내기
 	while(1){
@@ -86,6 +87,19 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		printf("[UDP] %d바이트를 보냈습니다.\n", retval);
+
+		// 데이터 보낸 후 응답 수신 대기
+		addrlen = sizeof(remoteaddr);
+		retval = recvfrom(sock, buf, BUFSIZE, 0, 
+			(SOCKADDR *)&remoteaddr, &addrlen);
+		if(retval == SOCKET_ERROR) {
+			err_display("recvfrom()");
+		}
+		else {
+			buf[retval] = '\0'; // null-terminate 받은 문자열
+			printf("서버로부터의 응답: %s\n", buf);
+		}
+
 	}
 
 	// closesocket()

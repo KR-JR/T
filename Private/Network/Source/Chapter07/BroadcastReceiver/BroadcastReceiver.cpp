@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define LOCALPORT 9000
+#define LOCALPORT 45454
 #define BUFSIZE   512
 
 // 소켓 함수 오류 출력 후 종료
@@ -75,7 +75,20 @@ int main(int argc, char *argv[])
 		buf[retval] = '\0';
 		printf("[UDP/%s:%d] %s\n", inet_ntoa(peeraddr.sin_addr),
 			ntohs(peeraddr.sin_port), buf);
+		
+		// 데이터 수신 후 응답 보내기
+		const char* response = "응답 메시지";
+		retval = sendto(sock, response, strlen(response), 0,
+			(SOCKADDR *)&peeraddr, sizeof(peeraddr));
+		if(retval == SOCKET_ERROR) {
+			err_display("sendto()");
+		}
+		else {
+			printf("응답을 %d 바이트 보냈습니다.\n", retval);
+		}
+		
 	}
+
 
 	// closesocket()
 	closesocket(sock);
