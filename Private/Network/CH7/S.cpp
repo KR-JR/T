@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define REMOTEIP   "255.255.255.255"
-#define REMOTEPORT 9999
+#define REMOTEPORT 9000
 #define BUFSIZE    512
 
 // 소켓 함수 오류 출력 후 종료
@@ -87,18 +87,19 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		// 데이터 보낸 후 응답 수신 대기
+		// 데이터 받기
 		addrlen = sizeof(remoteaddr);
-		retval = recvfrom(sock, buf, BUFSIZE, 0, 
+		retval = recvfrom(sock, buf, BUFSIZE, 0,
 			(SOCKADDR *)&remoteaddr, &addrlen);
-		if(retval == SOCKET_ERROR) {
+		if(retval == SOCKET_ERROR){
 			err_display("recvfrom()");
-		}
-		else {
-			buf[retval] = '\0'; // null-terminate 받은 문자열
-			printf("서버로부터의 응답: %s\n", buf);
+			continue;
 		}
 
+		// 받은 데이터 출력
+		buf[retval] = '\0';
+		printf("[UDP/%s:%d] %s\n", inet_ntoa(remoteaddr.sin_addr),
+			ntohs(remoteaddr.sin_port), buf);
 	}
 
 	// closesocket()

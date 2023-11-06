@@ -62,11 +62,32 @@ int main(int argc, char *argv[])
 
 	// 데이터 통신에 사용할 변수
 	SOCKADDR_IN clientaddr;
+	int len;
 	int addrlen;
 	char buf[BUFSIZE+1];
 
 	// 클라이언트와 데이터 통신
 	while(1){
+		// 데이터 입력
+		printf("\n[보낼 데이터] ");
+		if(fgets(buf, BUFSIZE+1, stdin) == NULL)
+			break;
+
+		// '\n' 문자 제거
+		len = strlen(buf);
+		if(buf[len-1] == '\n')
+			buf[len-1] = '\0';
+		if(strlen(buf) == 0)
+			break;
+
+		// 데이터 보내기
+		retval = sendto(sock, buf, strlen(buf), 0,
+			(SOCKADDR *)&clientaddr, sizeof(clientaddr));
+		if(retval == SOCKET_ERROR){
+			err_display("sendto()");
+			continue;
+		}
+
 		// 데이터 받기
 		addrlen = sizeof(clientaddr);
 		retval = recvfrom(sock, buf, BUFSIZE, 0,
@@ -81,13 +102,6 @@ int main(int argc, char *argv[])
 		printf("[UDP/%s:%d] %s\n", inet_ntoa(clientaddr.sin_addr),
 			ntohs(clientaddr.sin_port), buf);
 
-		// 데이터 보내기
-		retval = sendto(sock, buf, retval, 0,
-			(SOCKADDR *)&clientaddr, sizeof(clientaddr));
-		if(retval == SOCKET_ERROR){
-			err_display("sendto()");
-			continue;
-		}
 	}
 
 	// closesocket()
