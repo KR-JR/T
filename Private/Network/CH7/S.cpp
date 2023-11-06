@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define SERVERIP   "127.0.0.1"
-#define SERVERPORT 9000
+#define REMOTEIP   "255.255.255.255"
+#define REMOTEPORT 9999
 #define BUFSIZE    512
 
 // 소켓 함수 오류 출력 후 종료
@@ -47,20 +47,25 @@ int main(int argc, char *argv[])
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
 	if(sock == INVALID_SOCKET) err_quit("socket()");
 
+	// 브로드캐스팅 활성화
+	BOOL bEnable = TRUE;
+	retval = setsockopt(sock, SOL_SOCKET, SO_BROADCAST,
+		(char *)&bEnable, sizeof(bEnable));
+	if(retval == SOCKET_ERROR) err_quit("setsockopt()");
+
 	// 소켓 주소 구조체 초기화
-	SOCKADDR_IN serveraddr;
-	ZeroMemory(&serveraddr, sizeof(serveraddr));
-	serveraddr.sin_family = AF_INET;
-	serveraddr.sin_addr.s_addr = inet_addr(SERVERIP);
-	serveraddr.sin_port = htons(SERVERPORT);
+	SOCKADDR_IN remoteaddr;
+	ZeroMemory(&remoteaddr, sizeof(remoteaddr));
+	remoteaddr.sin_family = AF_INET;
+	remoteaddr.sin_addr.s_addr = inet_addr(REMOTEIP);
+	remoteaddr.sin_port = htons(REMOTEPORT);
 
 	// 데이터 통신에 사용할 변수
-	SOCKADDR_IN peeraddr;
-	int addrlen;
 	char buf[BUFSIZE+1];
 	int len;
+	int addrlen;
 
-	// 서버와 데이터 통신
+	// 브로드캐스트 데이터 보내기
 	while(1){
 		// 데이터 입력
 		printf("\n[보낼 데이터] ");
@@ -76,32 +81,24 @@ int main(int argc, char *argv[])
 
 		// 데이터 보내기
 		retval = sendto(sock, buf, strlen(buf), 0,
-			(SOCKADDR *)&serveraddr, sizeof(serveraddr));
+			(SOCKADDR *)&remoteaddr, sizeof(remoteaddr));
 		if(retval == SOCKET_ERROR){
 			err_display("sendto()");
 			continue;
 		}
-		printf("[UDP 클라이언트] %d바이트를 보냈습니다.\n", retval);
 
-		// 데이터 받기
-		addrlen = sizeof(peeraddr);
-		retval = recvfrom(sock, buf, BUFSIZE, 0,
-			(SOCKADDR *)&peeraddr, &addrlen);
-		if(retval == SOCKET_ERROR){
+		// 데이터 보낸 후 응답 수신 대기
+		addrlen = sizeof(remoteaddr);
+		retval = recvfrom(sock, buf, BUFSIZE, 0, 
+			(SOCKADDR *)&remoteaddr, &addrlen);
+		if(retval == SOCKET_ERROR) {
 			err_display("recvfrom()");
-			continue;
+		}
+		else {
+			buf[retval] = '\0'; // null-terminate 받은 문자열
+			printf("서버로부터의 응답: %s\n", buf);
 		}
 
-		// 송신자의 IP 주소 체크
-		if(memcmp(&peeraddr, &serveraddr, sizeof(peeraddr))){
-			printf("[오류] 잘못된 데이터입니다!\n");
-			continue;
-		}
-
-		// 받은 데이터 출력
-		buf[retval] = '\0';
-		printf("[UDP 클라이언트] %d바이트를 받았습니다.\n", retval);
-		printf("[받은 데이터] %s\n", buf);
 	}
 
 	// closesocket()
