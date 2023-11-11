@@ -1,0 +1,6 @@
+﻿  MulticastSender.cpp
+C:\Code\Private\Network\Source\Chapter08\MulticastSender\MulticastSender.cpp(72,17): error C2065: 'BUFSsssssssssssssssssssssIZE': 선언되지 않은 식별자입니다.
+C:\Code\Private\Network\Source\Chapter08\MulticastSender\MulticastSender.cpp(72,6): error C2660: 'fgets': 함수는 2개의 인수를 사용하지 않습니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\stdio.h(198,28): message : 'fgets' 선언을 참조하십시오.
+C:\Code\Private\Network\Source\Chapter08\MulticastSender\MulticastSender.cpp(72,6): message : 인수 목록 '(char [513], FILE *)'을(를) 일치시키는 동안
+C:\Code\Private\Network\Source\Chapter08\MulticastSender\MulticastSender.cpp(61,31): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings

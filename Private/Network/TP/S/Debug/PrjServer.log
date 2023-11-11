@@ -1,0 +1,6 @@
+﻿  PrjServer.cpp
+C:\Code\Private\Network\Source\Chapter14\PrjServer\PrjServer.cpp(113,6): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\Source\Chapter14\PrjServer\PrjServer.cpp(129,5): warning C4996: 'WSAAddressToStringA': Use WSAAddressToStringW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\Source\Chapter14\PrjServer\PrjServer.cpp(208,4): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\Source\Chapter14\PrjServer\PrjServer.cpp(217,3): warning C4996: 'WSAAddressToStringA': Use WSAAddressToStringW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  PrjServer.vcxproj -> C:\Code\Private\Network\Source\Chapter14\PrjServer\Debug\PrjServer.exe

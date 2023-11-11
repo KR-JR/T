@@ -1,0 +1,6 @@
+﻿  MulticastReceiver.cpp
+C:\Code\Private\Network\CH9\MulticastReceiver.cpp(64,31): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\CH9\MulticastReceiver.cpp(132,30): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\CH9\MulticastReceiver.cpp(156,30): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  LINK : C:\Code\Private\Network\CH9\Debug\MulticastReceiver.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  MulticastReceiver.vcxproj -> C:\Code\Private\Network\CH9\Debug\MulticastReceiver.exe
