@@ -1,6 +1,0 @@
-﻿  MulticastReceiver.cpp
-C:\Code\Private\Network\Source\Chapter08\MulticastReceiver\MulticastReceiver.cpp(64,30): error C2065: 'REMOTEPORT': 선언되지 않은 식별자입니다.
-C:\Code\Private\Network\Source\Chapter08\MulticastReceiver\MulticastReceiver.cpp(63,31): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-C:\Code\Private\Network\Source\Chapter08\MulticastReceiver\MulticastReceiver.cpp(125,29): error C2065: 'LOCALPORT': 선언되지 않은 식별자입니다.
-C:\Code\Private\Network\Source\Chapter08\MulticastReceiver\MulticastReceiver.cpp(131,30): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-C:\Code\Private\Network\Source\Chapter08\MulticastReceiver\MulticastReceiver.cpp(155,30): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
