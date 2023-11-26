@@ -1,0 +1,5 @@
+﻿  EventSelectTCPServer.cpp
+C:\Code\Private\Network\Source\Chapter10\EventSelectTCPServer\EventSelectTCPServer.cpp(96,5): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\Source\Chapter10\EventSelectTCPServer\EventSelectTCPServer.cpp(145,32): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Code\Private\Network\Source\Chapter10\EventSelectTCPServer\EventSelectTCPServer.cpp(214,3): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  EventSelectTCPServer.vcxproj -> C:\Code\Private\Network\Source\Chapter10\EventSelectTCPServer\Debug\EventSelectTCPServer.exe
