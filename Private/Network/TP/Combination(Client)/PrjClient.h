@@ -75,6 +75,7 @@ typedef struct _FILEDATA_MSG
 {
 	int type;
 	char filename[SIZE_DAT];
+	int filesize;
 }FILEDATA_MSG;
 
 typedef struct MessageNode {
