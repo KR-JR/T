@@ -1,0 +1,2 @@
+C:\Code\Private\Network\TP\T_S\x64\Debug\PrjServer.exe
+C:\Code\Private\Network\TP\Shape(Server)\x64\Debug\PrjServer.exe

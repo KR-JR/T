@@ -1,4 +1,2 @@
 ﻿  PrjServer.cpp
-C:\Code\Private\Network\TP\Combination(Server)\PrjServer.cpp(131,5): error C2660: 'AddSocketInfo': 함수는 1개의 인수를 사용하지 않습니다.
-C:\Code\Private\Network\TP\Combination(Server)\PrjServer.cpp(19,6): message : 'AddSocketInfo' 선언을 참조하십시오.
-C:\Code\Private\Network\TP\Combination(Server)\PrjServer.cpp(131,5): message : 인수 목록 '(SOCKET)'을(를) 일치시키는 동안
+  PrjServer.vcxproj -> C:\Code\Private\Network\TP\Combination(Server)\x64\Debug\PrjServer.exe

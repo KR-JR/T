@@ -1,1 +1,3 @@
-C:\Code\Private\Network\TP\T_S\x64\Debug\PrjServer.exe
+C:\Users\sogno\OneDrive\바탕 화면\Windows\Chapter14\PrjServer\x64\Debug\PrjServer.exe
+C:\Users\Owner\OneDrive\바탕 화면\Windows (1)\Chapter14\PrjServer\x64\Debug\PrjServer.exe
+C:\Code\Private\Network\TP\Combination(Server)\x64\Debug\PrjServer.exe

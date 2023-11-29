@@ -1,0 +1,4 @@
+﻿  PrjServer.cpp
+C:\Code\Private\Network\TP\Shape(Server)\PrjServer.cpp(300,25): warning C4129: '.': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+C:\Code\Private\Network\TP\Shape(Server)\PrjServer.cpp(300,25): warning C4129: 'R': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+  PrjServer.vcxproj -> C:\Code\Private\Network\TP\Shape(Server)\x64\Debug\PrjServer.exe
