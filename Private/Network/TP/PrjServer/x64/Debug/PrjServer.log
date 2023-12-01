@@ -1,3 +1,2 @@
 ﻿  PrjServer.cpp
-C:\Code\Private\Network\TP\PrjServer\PrjServer.cpp(140,9): error C2374: 'on': 재정의. 여러 번 초기화했습니다.
-C:\Code\Private\Network\TP\PrjServer\PrjServer.cpp(116,9): message : 'on' 선언을 참조하십시오.
+  PrjServer.vcxproj -> C:\Code\Private\Network\TP\PrjServer\x64\Debug\PrjServer.exe

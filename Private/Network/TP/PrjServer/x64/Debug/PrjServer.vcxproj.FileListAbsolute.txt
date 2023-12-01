@@ -2,3 +2,4 @@ C:\Users\sogno\OneDrive\바탕 화면\Windows\Chapter14\PrjServer\x64\Debug\PrjS
 C:\Users\Owner\OneDrive\바탕 화면\Windows (1)\Chapter14\PrjServer\x64\Debug\PrjServer.exe
 C:\Users\sogno\OneDrive\바탕 화면\TermProject\TermProject\PrjServer\x64\Debug\PrjServer.exe
 C:\Users\sogno\OneDrive\바탕 화면\TermProject -1\TermProject\PrjServer\x64\Debug\PrjServer.exe
+C:\Code\Private\Network\TP\PrjServer\x64\Debug\PrjServer.exe
