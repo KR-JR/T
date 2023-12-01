@@ -1,0 +1,5 @@
+C:\Users\sogno\OneDrive\바탕 화면\Windows\Chapter14\PrjClient\x64\Debug\PrjClient.exe
+C:\Users\Owner\OneDrive\바탕 화면\Windows (1)\Chapter14\PrjClient\x64\Debug\PrjClient.exe
+C:\Users\sogno\OneDrive\바탕 화면\TermProject\TermProject\PrjClient\x64\Debug\PrjClient.exe
+C:\Users\sogno\OneDrive\바탕 화면\TermProject -1\TermProject\PrjClient\x64\Debug\PrjClient.exe
+C:\Code\Private\Network\TP\PrjClient\x64\Debug\PrjClient.exe
