@@ -1,0 +1,26 @@
+module ALU_slice_MSB(
+    input a,
+    input b,
+    input cin,
+    input [2:0] opcode,
+    output result,
+    output cout,
+    output overflow,
+    output set
+);
+    // Similar internals as ALU_slice
+    // ...
+
+    // Overflow detection logic for addition
+    wire sum_without_carry = a ^ b ^ cin;
+    assign overflow = (a & b & ~sum_without_carry) | (~a & ~b & sum_without_carry);
+
+    // The 'set' output can be used for conditions like "if less than"
+    // This is just a placeholder; actual implementation depends on ALU design
+    assign set = result & overflow;
+
+    // Remainder of the module would be similar to ALU_slice
+    // ...
+
+endmodule
+

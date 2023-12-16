@@ -1,0 +1,40 @@
+module ALU16(
+    input [15:0] a,
+    input [15:0] b,
+    input cin,             // Carry in for the LSB
+    input [2:0] opcode,    // Operation code to determine the ALU operation
+    output [15:0] result,  // 16-bit result
+    output cout,           // Carry out from the MSB
+    output overflow        // Overflow indicator for the MSB
+);
+    wire [15:0] c;  // Internal carries between the slices
+
+    // Instantiate 15 regular ALU slices for bits 0 to 14
+    genvar i;
+    generate
+        for (i = 0; i < 15; i = i + 1) begin : alu_slices
+            ALU_slice slice(
+                .a(a[i]),
+                .b(b[i]),
+                .cin(i == 0 ? cin : c[i - 1]),
+                .opcode(opcode),
+                .result(result[i]),
+                .cout(c[i])
+            );
+        end
+    endgenerate
+
+    // Instantiate the MSB ALU slice with overflow detection
+    ALU_slice_MSB msb_slice(
+        .a(a[15]),
+        .b(b[15]),
+        .cin(c[14]),         // Carry in is the carry out from the previous slice
+        .opcode(opcode),
+        .result(result[15]),
+        .cout(cout),         // The carry out of the MSB slice is the carry out of the ALU
+        .overflow(overflow)  // Overflow flag for the ALU
+        // .set(set)           // Set flag (if needed, not shown here)
+    );
+
+endmodule
+

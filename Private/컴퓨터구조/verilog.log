@@ -1,0 +1,47 @@
+Dumping macros: __VERIWELL__
+VeriLogger Pro simulation log created at Mon Nov 06 15:40:17 2023
+Beginning Compile
+Beginning Phase I
+Compiling source file: C:\Users\JR-L\Desktop\컴퓨터구조\ripple_adder.v
+Compiling source file: C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L2: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L3: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L4: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L5: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L6: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L7: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L8: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L15: error: parse error, expecting `'(''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L17: error: parse error, expecting `error' or `'('' or `IDENTIFIER'
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L17: error: parse error, expecting `error' or `','' or `')''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L17: error: parse error, expecting `error' or `','' or `')''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L17: error: parse error, expecting `error' or `','' or `')''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L17: error: parse error, expecting `error' or `','' or `';''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L26: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU16.v: L41: error: Invalid port name
+Compiling source file: C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L2: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L3: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L4: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L5: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L6: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L7: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L8: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L11: error: parse error, expecting `OR' or `')''
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L14: error: parse error, expecting `error' or `'('' or `IDENTIFIER'
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L15: error: parse error, expecting `error' or `'('' or `IDENTIFIER'
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L19: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L23: error: parse error, expecting `error' or `'('' or `IDENTIFIER'
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L24: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice_MSB.v: L28: error: Invalid port name
+Compiling source file: C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L2: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L3: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L4: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L5: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L6: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L7: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L8: error: parse error
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L35: error: Continuous assignment lval 'cout' not a net
+C:\Users\JR-L\Desktop\컴퓨터구조\ALU_slice.v: L40: error: Invalid port name
+Finished Phase I

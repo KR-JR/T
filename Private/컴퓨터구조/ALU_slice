@@ -1,0 +1,33 @@
+module ALU_slice(
+    input a,
+    input b,
+    input cin,
+    input [2:0] opcode,
+    output result,
+    output cout
+);
+    wire sum, a_and_b, a_or_b, a_not;
+    
+    // Full adder from your provided code
+    assign sum = a ^ b ^ cin;
+    assign cout = a & b | a & cin | b & cin;
+
+    // Bitwise operations
+    assign a_and_b = a & b;
+    assign a_or_b = a | b;
+    assign a_not = ~a;
+
+    // MUX4: Assuming you have a MUX with a select line as opcode
+    // The outputs of the operations are inputs to the MUX
+    // The opcode selects which operation result is the output
+    mux4 my_mux(
+        .a0(sum),
+        .a1(a_and_b),
+        .a2(a_or_b),
+        .a3(a_not),
+        .sel(opcode),
+        .y(result)
+    );
+
+endmodule
+
