@@ -7,4 +7,3 @@ image.fill(200)
 cv2.imshow("Window title", image)
 cv2.waitkey(0)
 cv2.destroyAllWindows()
-    
