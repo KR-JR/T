@@ -1,17 +1,17 @@
 import socket
 
-server_ip = 'localhost' 
-server_port = 3333
+def tcp_time_client(server_ip, server_port):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+        client_socket.connect((server_ip, server_port))
+        
+        client_socket.sendall('time'.encode('utf-8'))
+        received = client_socket.recv(1024)
+        print(f"서버 시간: {received.decode('utf-8').strip()}")
 
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-socket.connect((server_ip, server_port))
+        client_socket.sendall('current time'.encode('utf-8'))
+        received = client_socket.recv(1024)
+        print(f"서버 현재 시간: {received.decode('utf-8').strip()}")
 
-msg = input('msg:') 
-socket.sendall(msg.encode(encoding='utf-8'))
+        client_socket.sendall('quit'.encode('utf-8'))
 
-# 서버가 에코로 되돌려 보낸 메시지를 클라이언트가 받음
-data = socket.recv(100)
-msg = data.decode() # 읽은 데이터 디코딩
-print('echo msg:', msg)
-
-socket.close()
+tcp_time_client('localhost', 5678)

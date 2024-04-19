@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 
-// ¼ÒÄÏ ÇÔ¼ö ¿À·ù Ãâ·Â
+// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 void err_display(char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -16,7 +16,7 @@ void err_display(char *msg)
 	LocalFree(lpMsgBuf);
 }
 
-// µµ¸ÞÀÎ ÀÌ¸§ -> IPv4 ÁÖ¼Ò ¹× º°¸í Ãâ·Â
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ -> IPv4 ï¿½Ö¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 BOOL PrintIPAddrAndAliases(char *name)
 {
 	HOSTENT *ptr = gethostbyname(name);
@@ -28,16 +28,16 @@ BOOL PrintIPAddrAndAliases(char *name)
 	if (ptr->h_addrtype != AF_INET)
 		return FALSE;
 
-    // ¸ðµç IP ÁÖ¼Ò Ãâ·Â
+    // ï¿½ï¿½ï¿½ IP ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½
 	for (int i = 0; ptr->h_addr_list[i]; i++) {
 		IN_ADDR addr;
 		memcpy(&addr, ptr->h_addr_list[i], ptr->h_length);
-		printf("IP ÁÖ¼Ò: %s\n", inet_ntoa(addr));
+		printf("IP ï¿½Ö¼ï¿½: %s\n", inet_ntoa(addr));
 	}
 
-    // ¸ðµç º°¸í Ãâ·Â
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     for (int i = 0; ptr->h_aliases[i]; i++) {
-        printf("º°¸í: %s\n", ptr->h_aliases[i]);
+        printf("ï¿½ï¿½ï¿½ï¿½: %s\n", ptr->h_aliases[i]);
     }
 
 	return TRUE;
@@ -46,7 +46,7 @@ BOOL PrintIPAddrAndAliases(char *name)
 int main(int argc, char *argv[])
 {
 	if (argc < 2) {
-		printf("»ç¿ë¹ý: %s <µµ¸ÞÀÎ ÀÌ¸§>\n", argv[0]);
+		printf("ï¿½ï¿½ï¿½ï¿½: %s <ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½>\n", argv[0]);
 		return 1;
 	}
 
@@ -54,9 +54,9 @@ int main(int argc, char *argv[])
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
 		return 1;
 
-	printf("µµ¸ÞÀÎ ÀÌ¸§ = %s\n", argv[1]);
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ = %s\n", argv[1]);
 
-	// µµ¸ÞÀÎ ÀÌ¸§¿¡ ´ëÇÑ IP ÁÖ¼Ò ¹× º°¸í Ãâ·Â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ IP ï¿½Ö¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	PrintIPAddrAndAliases(argv[1]);
 
 	WSACleanup();
