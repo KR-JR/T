@@ -7,7 +7,7 @@ public class Ex2_3 {
         int won = scanner.nextInt();
         double dollor = won/rate;
 
-        System.out.print(a);
-        System.out.print("원은");
+        System.out.printf("%d원은 $%.2f입니다.", won, dollor);
+        scanner.close();
     }
 }
