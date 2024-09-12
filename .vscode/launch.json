@@ -6,6 +6,83 @@
     "configurations": [
         {
             "type": "java",
+            "name": "prj_2",
+            "request": "launch",
+            "mainClass": "prj_2",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "prj_1",
+            "request": "launch",
+            "mainClass": "prj_1",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_10",
+            "request": "launch",
+            "mainClass": "week_2_10",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_9",
+            "request": "launch",
+            "mainClass": "week_2_9",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_8",
+            "request": "launch",
+            "mainClass": "week_2_8",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_7",
+            "request": "launch",
+            "mainClass": "week_2_7",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_6",
+            "request": "launch",
+            "mainClass": "week_2_6",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_4",
+            "request": "launch",
+            "mainClass": "week_2_4",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_3",
+            "request": "launch",
+            "mainClass": "week_2_3",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_2",
+            "request": "launch",
+            "mainClass": "week_2_2",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "week_2_1",
+            "request": "launch",
+            "mainClass": "week_2_1",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
             "name": "week_2",
             "request": "launch",
             "mainClass": "week_2",

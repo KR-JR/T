@@ -1,4 +1,4 @@
-public class week_2 {
+public class week_2_1 {
     public static void main(String[] args) {
     // int i;
     // i = 10;
