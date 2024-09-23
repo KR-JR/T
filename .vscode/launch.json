@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "week3_1",
+            "request": "launch",
+            "mainClass": "week3_1",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
+            "name": "prj1_2",
+            "request": "launch",
+            "mainClass": "prj1_2",
+            "projectName": "T_85d1f18a"
+        },
+        {
+            "type": "java",
             "name": "prj_2",
             "request": "launch",
             "mainClass": "prj_2",

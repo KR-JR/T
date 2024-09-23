@@ -1,4 +1,4 @@
-public class prj_1 {
+public class prj2_1 {
     public static void main(String[] args) {
         int class_m = 27; // 학급 인원들
         int das = 12; // 1다스
