@@ -12,6 +12,8 @@ public class Step2 {
         System.out.println(a * b);
         System.out.println(a / b);
         System.out.println(a % b);
+
+        scanner.close();
     }
 }
 
